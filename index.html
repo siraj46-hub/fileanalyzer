@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malware Scanner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            background-color: white;
+            width: 40%;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .upload-box {
+            padding: 20px;
+            border: 2px dashed #007bff;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .upload-box:hover {
+            background-color: #e9ecef;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            color: #007bff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #fileName {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Upload a File for Scanning</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="upload-box" onclick="document.getElementById('fileInput').click();">
+                <label for="fileInput">Click to Select a File</label>
+                <input type="file" name="file" id="fileInput" required onchange="showFileName()">
+            </div>
+            <p id="fileName">No file selected</p>
+            <button type="submit" class="button">Scan</button>
+        </form>
+    </div>
+
+    <script>
+        function showFileName() {
+            var fileInput = document.getElementById('fileInput');
+            var fileNameDisplay = document.getElementById('fileName');
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.innerText = "Selected file: " + fileInput.files[0].name;
+            } else {
+                fileNameDisplay.innerText = "No file selected";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
